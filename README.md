@@ -4,11 +4,15 @@
 
 Este repositorio contiene el informe de proyecto de grado que fue presentado ante la ilustre Universidad de Los Andes como requisito final para obtener el Título de Ingeniero de Sistemas.
 
-![Membrete ULA](./docs/logo_ing_sis.png)
+<p align="center">
+  <img src="./docs/logo_ing_sis.png" alt="Membrete ULA">
+</p>
+
 
 
 ## Título
 Un Preparador Digital como Recurso Virtual para la Enseñanza de los Fundamentos Prácticos de la Materia Sistemas Operativos de la Escuela de Ingeniería de Sistemas de La Universidad De Los Andes
+
 
 
 ## Contenido del Repositorio
