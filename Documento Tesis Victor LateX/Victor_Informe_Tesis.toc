@@ -1,0 +1,37 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {chapter}{\'{I}ndice de tablas}{5}{chapter*.2}%
+\contentsline {chapter}{\'{I}ndice de figuras}{6}{chapter*.3}%
+\contentsline {chapter}{\numberline {1}Introducci\'on}{9}{chapter.5}%
+\contentsline {section}{\numberline {1.1}Planteamiento del Problema}{9}{section.6}%
+\contentsline {section}{\numberline {1.2}Formulaci\'on del Problema}{11}{section.7}%
+\contentsline {section}{\numberline {1.3}Objetivo General}{11}{section.8}%
+\contentsline {section}{\numberline {1.4}Objetivos Espec\IeC {\'\i }ficos}{12}{section.9}%
+\contentsline {section}{\numberline {1.5}Justificaci\'on}{12}{section.12}%
+\contentsline {section}{\numberline {1.6}Alcance}{13}{section.13}%
+\contentsline {chapter}{\numberline {2}Marco Te\'orico}{14}{chapter.14}%
+\contentsline {section}{\numberline {2.1}Antecedentes de la Investigaci\'on}{14}{section.15}%
+\contentsline {section}{\numberline {2.2}Bases te\'oricas}{17}{section.16}%
+\contentsline {subsection}{\numberline {2.2.1}D-learning}{17}{subsection.17}%
+\contentsline {subsection}{\numberline {2.2.2}E-learning}{18}{subsection.18}%
+\contentsline {subsection}{\numberline {2.2.3}Sistemas e-learning}{18}{subsection.19}%
+\contentsline {subsection}{\numberline {2.2.4}Recurso did\'actico}{18}{subsection.20}%
+\contentsline {subsection}{\numberline {2.2.5}Preparador acad\'emico}{19}{subsection.21}%
+\contentsline {subsection}{\numberline {2.2.6}Tecnolog\IeC {\'\i }as de la informaci\'on y la comunicaci\'on (TIC) como facilitadoras del aprendizaje}{20}{subsection.22}%
+\contentsline {subsubsection}{\numberline {2.2.6.1}Concepto}{20}{subsubsection.23}%
+\contentsline {subsubsection}{\numberline {2.2.6.2}Relaci\'on con las estrategias educativas}{20}{subsubsection.24}%
+\contentsline {subsubsection}{\numberline {2.2.6.3}Influencia como herramientas web}{22}{subsubsection.26}%
+\contentsline {chapter}{\numberline {3}Marco Metodol\'ogico}{25}{chapter.28}%
+\contentsline {section}{\numberline {3.1}Selecci\'on de la Tecnolog\IeC {\'\i }a}{25}{section.29}%
+\contentsline {section}{\numberline {3.2}Proceso de software del preparador digital}{26}{section.30}%
+\contentsline {section}{\numberline {3.3}Arquitectura del preparador digital}{28}{section.33}%
+\contentsline {section}{\numberline {3.4}Dise\~no del contenido de los videos para el caso \IeC {\textquotedblleft }Sistemas Operativos-EISULA\IeC {\textquotedblright }}{31}{section.36}%
+\contentsline {section}{\numberline {3.5}Herramientas para la construcci\'on del preparador digital}{32}{section.38}%
+\contentsline {chapter}{\numberline {4}Implementaci\'on}{34}{chapter.39}%
+\contentsline {section}{\numberline {4.1}Visi\'on general}{34}{section.40}%
+\contentsline {section}{\numberline {4.2}Vista de inicio}{35}{section.43}%
+\contentsline {section}{\numberline {4.3}Vista de contenido}{37}{section.45}%
+\contentsline {section}{\numberline {4.4}Vista de video}{38}{section.47}%
+\contentsline {chapter}{\numberline {5}Palabras Finales}{40}{chapter.49}%
+\contentsline {section}{\numberline {5.1}Conclusiones}{40}{section.50}%
+\contentsline {section}{\numberline {5.2}Trabajos futuros}{41}{section.51}%
+\contentsline {chapter}{Bibliograf\IeC {\'\i }a}{43}{chapter*.52}%

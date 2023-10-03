@@ -1,0 +1,674 @@
+\documentclass[12pt]{report}
+%Definir idioma
+\usepackage[spanish,es-tabla]{babel}
+\usepackage[ansinew]{inputenc}
+%\usepackage[utf8]{inputenc}
+ %es-table: escribe "Tabla" y no "Cuadro"
+
+%Hipervinculos
+\usepackage[hypertexnames=false]{hyperref}
+%hypertexnames=false da los valores correctos de los numeros de secciones y otras cosas
+
+%tablas
+\usepackage{multirow}
+\usepackage{longtable}
+
+%importar imagenes
+\usepackage{graphicx}
+
+
+%margenes
+\usepackage[top=1in,bottom=1in,left=1in,right=1in]{geometry}
+% Encabezados y pie de pagina/ BASICOS
+\usepackage{fancyhdr}
+\fancypagestyle{plain}{
+	\fancyhf{}
+	\fancyhead[L]{PREPARADOR DIGITAL PARA EISULA}
+	\fancyhead[R]{\thepage}
+	\renewcommand{\headrulewidth}{0pt}
+}
+\setlength{\headheight}{15.34767pt}
+\pagestyle{plain}
+\renewcommand{\baselinestretch}{2} %Modificar interlineado
+
+
+\setcounter{secnumdepth}{3} % para que ponga 1.1.1.1 (numeracion) en subsubsecciones
+\setcounter{tocdepth}{3} % para que ponga subsubsecciones en el indice
+%el numero 3 puede variar, este es el número de sub secciones que utilizará, en este caso son 3 pero tu lo puedes modificar.
+%Prueba haber si te funcionó. [sic.]
+
+\begin{document}
+	%Portada
+	\begin{titlepage}
+	\thispagestyle{plain}
+	
+	\vspace*{2\baselineskip}
+	\begin{center}
+	{\bfseries Un Preparador Digital como Recurso Virtual para la Enseñanza de los Fundamentos Prácticos de la Materia Sistemas Operativos de la Escuela de Ingeniería de Sistemas de La Universidad De Los Andes \par}
+		\vspace{2\baselineskip}
+	{Victor M. Albornoz \par}
+	{Tutor: Ph. D. Gerard Paéz Monzón \par}
+	{Escuela de Ingeniería de Sistemas, Facultad de Ingeniería, Universidad de Los Andes \par}
+	\vfill
+	{\textbf{Notas del Autor} \par}
+\end{center}
+	
+
+	Victor Manuel Albornoz Medina, Escuela de Ingeniería de Sistemas, Facultad de Ingeniería, Universidad de Los Andes.
+			
+Este trabajo cuenta con la tutoría del doctor Gerard Paéz Monzón, de la Escuela de Ingeniería de Sistemas, Facultad de Ingeniería, Universidad de Los Andes.
+
+Cualquier mensaje en relación con este trabajo debe comunicarse a \\albornoz1995@gmail.com
+	\vspace*{\baselineskip}
+	\end{titlepage}
+	%Fin - Portada
+	\setcounter{page}{2} % Esto establece el contador de pagina de esta pagina en 2
+	%Paginas posteriores se enumeran a partir de esta.
+	
+	%Resumen
+	\chapter*{Resumen}
+	\noindent
+	La investigación apunta al inicio de la creación de un preparador digital como recurso virtual para la Enseñanza de los Fundamentos Prácticos de la Materia Sistemas Operativos de la Escuela de Ingeniería de Sistemas de La Universidad De Los Andes, ante la necesidad de un cambio de visión sobre la educación universitaria en vías de la postpandemia Covid-19. Para ello, se construyó un sitio web, con videos informativos, a través de un proceso de software en cascada y una arquitectura de “telaraña pura”. Se concluye que el preparador digital, en su carácter de facilitador de contenidos, es una respuesta positiva y significativa al apoyo académico que, en la actualidad, requiere la nueva universidad venezolana.\\\\
+	
+	\textbf{\textit{Palabras clave:}} preparador, recurso didáctico, sitio web, video, sistemas operativos, aprendizaje.
+	
+	%Indices
+	\tableofcontents
+	
+	\addcontentsline{toc}{chapter}{\listtablename} % para que aparezca en el indice de contenidos
+	\listoftables
+	
+	\addcontentsline{toc}{chapter}{\listfigurename} % para que aparezca en el indice de contenidos
+	\listoffigures
+
+
+	%Documento
+	\chapter{Introducción}
+	
+\section{Planteamiento del Problema}
+Desde la aparición del Covid-19, como pandemia mundial, se originó un cambio drástico y definitivo en todos los ámbitos del acontecer diario, marcado por las distintas medidas de bioseguridad implementadas, principalmente, el confinamiento en los hogares, el cierre de los espacios públicos (comerciales, administrativos y educativos en general, a excepción evidente de las instalaciones de salud y en restricción controlada los expendios de alimentos y medicamentos) y, por ende, la paralización de casi todas las actividades que caracterizan el vivir en sociedad.
+
+Ante tal situación, los ciudadanos adoptaron nuevos hábitos, en su gran mayoría, con la ayuda de dispositivos tecnológicos que les permitiesen la continuidad de sus vidas, a la espera de superar la emergencia sanitaria, tales como: ejercicio físico en casa, juegos de mesa, videojuegos, videollamadas, llamadas telefónicas tradicionales, entre muchos otros.
+
+Sin embargo, lo que en un principio se pensó como momentáneo, se prolongó en el tiempo, razón por la cual, aunque hoy en día se intenta retomar todas las actividades, lo cierto es que la aparente normalidad a la que se está llegando no es tal, ni lo será. No es posible volver al ritmo de vida anterior, tal como lo advierte Prince Torres (2021) citado por Cavagnaro-Murillo (2022)\cite{Cavagnaro}, valiéndose del argumento de Lew y Herrera (2020) quienes afirman que “retornar al estado pre-pandemia resulta una configuración de difícil alcance en función de que el daño ocasionado directa e indirectamente por el COVID-19, ha abarcado desde la economía hasta incluso, el estado socioambiental”. Por ello, “…se sostiene que es necesario construir una ‘nueva normalidad’, diferente a la ‘normalidad pre-pandemia’ por ser esta inviable. (s/p).
+
+En este sentido puede expresarse que, parafraseando a Prince Torres (2021)\cite{Cavagnaro}, dicho planteamiento de Lew y Herrera (2020), está en correspondencia con el criterio de la UNESCO (2020) cuando expone que “…hemos aceptado lo inaceptable durante demasiado tiempo. Nuestra realidad anterior ya no puede ser aceptada como normal. Ahora es el momento de cambiar”. En otras palabras, es tiempo de tomar conciencia y aceptar que se vive una nueva etapa signada por la transformación y que se requiere la puesta en marcha de estrategias novedosas para hacer frente a esta realidad.
+
+Partiendo de esta premisa y en el entorno objeto de esta investigación, es propicio considerar que la educación venezolana, como pilar fundamental de la sociedad, está inmersa en este procedimiento donde los paradigmas tradicionales se han dejado de lado, para dar paso a un concepto de universidad caracterizado por los elementos fundamentales que la conforman: estudiantes, docentes y las estructuras físicas de las instituciones educativas, pero adoptando un comportamiento diferente por encontrarse dentro de otro contexto socioeducativo.
+
+Siendo así, todos los actores recién ilustrados cooperan para el logro de los requerimientos que determinan la conformación del nuevo diseño pedagógico, mediante la puesta en práctica de herramientas y estrategias metodológicas que sustenten lo expuesto anteriormente, debido al surgimiento de diversas necesidades significativas propias de toda reestructuración.
+
+Dentro de este panorama, se atribuye lugar protagónico a la educación universitaria en tanto que es el tema central que despierta todas las inquietudes que dan lugar a estas reflexiones. La universidad es eje socio-educativo, piedra angular para la formación integral de los ciudadanos con valores científicos y humanísticos bajo la convicción de ser dueños de su destino cognitivo. 
+Por ello, exige particular tratamiento tomando en consideración el proceso transformador que se viene gestando; embebida en el universo tecnológico, resulta favorable pensar en la construcción de una nueva universidad con apoyo digital. He aquí la problemática que da origen a esta investigación: ¿cómo construir una nueva universidad con apoyo digital?
+
+
+
+
+\section{Formulación del Problema}
+¿Cómo utilizar un Recurso Virtual a manera de Preparador Digital para la Enseñanza de los Fundamentos Prácticos de la Materia Sistemas Operativos de la Escuela de Ingeniería de Sistemas de la Universidad de Los Andes?
+
+
+\section{Objetivo General}
+Crear un Preparador Digital como Recurso Virtual para la Enseñanza de los Fundamentos Prácticos de la Materia Sistemas Operativos de la Escuela de Ingeniería de Sistemas de la Universidad de Los Andes.
+
+
+\section{Objetivos Específicos}
+\begin{enumerate}
+	\item Diagnosticar la necesidad de un preparador digital como recurso de enseñanza que contribuya al entendimiento de las prácticas de laboratorio de la materia Sistemas Operativos de la Escuela de Ingeniería de Sistemas de la Universidad de Los Andes.
+
+	\item Diseñar un nuevo recurso virtual a manera de preparador digital para la enseñanza de los fundamentos prácticos de la materia Sistemas Operativos de la Escuela de Ingeniería de Sistemas de la Universidad de Los Andes.
+\end{enumerate}
+	
+	
+\section{Justificación}
+Ante la necesidad de modificar la educación universitaria, es conveniente señalar que en las universidades venezolanas existe la figura del preparador académico: se trata de un estudiante con la responsabilidad de dar lecciones, resolver dudas y aplicar prácticas de alguna materia perteneciente al pensum; quien es seleccionado mediante concurso por docentes especializados en el área. Representa un apoyo en el proceso de enseñanza-aprendizaje.
+
+Ahora bien, esta “nueva normalidad” referida en líneas anteriores, motiva a un cuestionamiento sobre la permanencia del mencionado preparador y es que en esta época hay una masificación de la información que exige una mayor participación activa por parte de cada alumno, en cierto modo una actitud parcialmente autodidacta. ¿Es entonces útil el preparador? Si así fuere, ¿con cuáles características, de qué modo? Tomando en cuenta los cambios producidos, ¿las universidades todavía cuentan con los preparadores?
+
+Además de otra actitud por parte del alumnado, relacionada con la gran cantidad de información disponible en estos momentos, siempre será conveniente contar con una ayuda adicional, pero debe destacarse que hoy en día existe una diáspora de preparadores por distintas razones de naturaleza socio-económica, que no van a comentarse en este documento. Entonces, ¿desaparecerá la figura del preparador?
+
+En este orden de ideas, si bien se requiere la construcción de una universidad con apoyo digital, igualmente se propone una conversión del concepto que hasta ahora se maneja sobre el preparador académico, es decir, preparadores virtuales para la nueva universidad y en atención a estos señalamientos nace este proyecto de grado como un ensayo en búsqueda de respuestas a lo que debe ser esa institución universitaria expectante. 
+
+
+
+\section{Alcance}
+La problemática en cuestión demanda una posible e inminente solución la cual se plantea en este proyecto de tesis; se trata de la creación de Un Preparador Digital como Recurso Virtual para la Enseñanza de los Fundamentos Prácticos de la Materia Sistemas Operativos de la Escuela de Ingeniería de Sistemas de la Universidad de Los Andes, el cual consiste en un sitio web conformado por una serie de videos cuya información comprende la explicación ejemplificada del contenido programático correspondiente a la parte práctica de la materia mencionada en tanto que es la labor del preparador académico.
+
+Siendo así, se pretende marcar el inicio de la creación de los preparadores digitales como un aporte idóneo para el desarrollo de la educación universitaria en tránsito a la pospandemia.
+
+
+\chapter{Marco Teórico}
+\section{Antecedentes de la Investigación}
+%Se deja este badbox
+Diversos estudios se han elaborado ante la necesidad de, según Marín (2019)\cite{Marin}, “…combinar lo pedagógico con lo tecnológico”, y es que se requiere “hacer uso de las diferentes herramientas para potencializar el proceso de enseñanza aprendizaje”. 
+
+ Siendo así, es importante manifestar los aportes de Camacho (2018)\cite{Camacho}, quien afirma que los entornos virtuales como medio de enseñanza en la praxis docente se hacen más aplicables cada día, pero de la mano con la ejecución de “estrategias o actividades que generen en los docentes la motivación para incorporarla de forma constante como una alternativa en el proceso de enseñanza-aprendizaje”; tras la realización de un procedimiento investigativo cuya metodología se trabaja a nivel descriptivo con diseño de campo en virtud de que la información se recolectó en el ambiente donde se desempeñan los profesores (objeto de estudio), de la Carrera de Derecho de la Universidad Nacional Experimental de los Llanos Occidentales “Ezequiel Zamora”, Sede Barinas Estado Barinas.
+
+Asimismo, Gutiérrez (2020)\cite{Gutierrez} indica “que el impacto que se ha generado con la implementación de las clases virtuales en los estudiantes es favorable” ya que, según estudios realizados para la Universidad San Ignacio Loyola en Lima, Perú, mediante una encuesta virtual, técnica para la recolección de datos en una investigación cualitativa de corte transversal, un alto porcentaje de los alumnos encuestados (37.84\%) pertenecientes a una muestra aleatoria (74 individuos), se manifestó a favor de esta estrategia educativa. Además, el 39.19\% de ellos mostró satisfacción con el nivel académico alcanzado.
+
+En este orden de ideas, es oportuno destacar la figura del tutor virtual quien, según Antón (2018)\cite{Anton} en un trabajo presentado como requisito para optar al Grado de Magister Scientiarum en Educación, Mención Tecnologías de la Información y la Comunicación para la Facultad de Humanidades y Educación de la Universidad Central de Venezuela, debe poseer las competencias pedagógicas idóneas que “engloban las competencias académicas, profesionales, sociales y tecnológicas” que conlleven a optimizar el logro del proceso de enseñanza-aprendizaje.
+
+A estas consideraciones de Antón (2018)\cite{Anton} se suman los planteamientos de Henao et al. (2022)\cite{Henao} al enfatizar, en palabras de los participantes de un diplomado que se dictó en la Universidad Católica del Norte, Colombia, la relevancia de los tutores en el acompañamiento y “motivación a participar en los espacios sincrónicos y asincrónicos, con dominio pedagógico de los temas, al presentar diversas estrategias y generar un clima de confianza”, además de constituirse “como atributo de la enseñanza virtual, asociada a la planificación del proceso formativo, desde el reconocimiento de formas de comunicación e interacción propias del ciberespacio; posibilitando de tal forma la consolidación de entornos de aprendizaje”. 
+
+En este sentido se requiere la utilización de recursos didácticos multimedia (mini videos interactivos, grabaciones de tutorías de tipo teórico y grabaciones de clases prácticas) acordes para el desarrollo de las actividades educativas en los entornos descritos y es que, parafraseando a Zambrano et al. (2021)\cite{Zambrano}, la educación
+convencional está en un momento de transformación donde ya no se requiere que
+el profesor asista personalmente a transmitir los conocimientos; más aún cuando
+se viven las difíciles circunstancias producto de la pandemia del Covid-19.
+
+Aunado a ello, Zambrano et al. (2021)\cite{Zambrano} advierten que “los recursos virtuales son la
+mejor herramienta didáctica que un docente puede utilizar, no solo en situaciones
+de emergencia, sino durante toda su carrera como profesional, siendo
+imprescindibles” porque con ellos se puede conservar el currículo actualizado, sin
+tomar en cuenta la presencialidad en la institución educativa, además de
+conseguir mejores resultados en los alumnos, “impactando positivamente en los
+aprendizajes significativos en las distintas fases del proceso de formación”.
+
+Es oportuno agregar que se han realizado otros estudios sobre este aspecto con
+la finalidad de optimizar el uso de dichos recursos, razón por la cual Palencia y
+Reyes (2019) \cite{Palencia} analizaron, como variables de su investigación, algunas
+características que deben tener las herramientas didácticas, entre las que se
+mencionan el color y el tipo de ellas que los tutores prefieren para su estilo de
+labor tutorial; concluyendo que debe utilizarse “el azul porque potencia el
+aprendizaje” y “el material educativo multimedia que tiene preponderancia en el
+aprendizaje de los estudiantes, bajo la perspectiva del tutor, son los
+videotutoriales”.
+
+A este respecto, De La Fuente et al. (2018)\cite{DeLaFuente}, coinciden al apuntar que el video, ya sea en formato convencional o integrando la interactividad, continúa siendo el predilecto de alumnos y profesores para mejorar la calidad del proceso de aprendizaje, principalmente, en aquellas asignaturas cuya particularidad es el contenido práctico. Inclusive, Gorman (2013) citado en Marín (2019)\cite{Marin} demostró que puede ser más productivo que una conferencia en vivo, porque se puede pausar, regresar, y reproducir innumerables veces según la necesidad y el ritmo para entender el tema. 
+
+Además, retomando el criterio de De La Fuente et al. (2018)\cite{DeLaFuente}, se comprobó la relación positiva entre el uso de dichos recursos, especialmente las clases prácticas grabadas, y el rendimiento académico, en tanto que quienes los utilizaron obtuvieron mejores calificaciones, por ello, se concluye que “el uso del video en distintos formatos contribuye positiva y significativamente al aprendizaje de materias de tipo cuantitativo en un entorno de enseñanza universitaria” virtual.
+
+
+\section{Bases teóricas}
+
+\subsection{D-learning}
+El concepto de aprendizaje digital, también conocido como d-learning, es expuesto por el Gobierno del Estado de Victoria (2017: s.n.) citado en Kumar et al. (2018)\cite{Kumar} y traducido como “cualquier tipo de aprendizaje facilitado por la tecnología o por la práctica instructiva que hace un uso efectivo de la tecnología”. Se trata de un término amplio que, puede manifestarse desde cualquier pieza de software educativo, hasta un programa de estudios en línea, sea cual sea el caso, es posible señalar, con total precisión, que su característica principal es el apropiado uso de las tecnologías de la información y la comunicación (TIC) con fines pedagógicos.
+
+\subsection{E-learning}
+El crecimiento exponencial de las tecnologías de la información y la comunicación (TIC) han ocasionado el surgimiento del aprendizaje electrónico, llamado también e-learning. \\Muhammad et al. (2020)\cite{Muhammad} al citar a Ozkan y Koseler (2009) define e-learning como “un mecanismo electrónico utilizado para entregar material de aprendizaje a los alumnos”. Ante la notable relación con el punto anterior, es pertinente detallar que el e-learning es un concepto más específico, es decir, está contenido en el d-learning.
+
+
+\subsection{Sistemas e-learning}
+Respecto a los sistemas de aprendizaje electrónico Muhammad et al. (2020)\cite{Muhammad} citando a Shee et al. (2008) en concordancia con el Comité de Estándares de Tecnología de IEEE, expone, “los sistemas de aprendizaje electrónico son sistemas de aprendizaje que utilizan navegadores web para impartir una experiencia de aprendizaje en línea”. Además, continúa con otra definición tomada de Lee et al.  (2008) al afirmar que, “el aprendizaje electrónico es una combinación de una computadora, un navegador e Internet para brindar educación y capacitación en línea”. Por lo tanto, un sistema e-learning, se trata de un recurso que utiliza los elementos de los sistemas web para proporcionar la enseñanza.
+
+
+\subsection{Recurso didáctico}
+Para Zambrano et al. (2021)\cite{Zambrano} Los recursos didácticos, “son todo tipo de material de los que hace uso el docente, con el único objetivo de hacer el proceso de enseñanza más dinámico y pedagógico” y con respecto a los diferentes formatos de los recursos didácticos, también denominados herramientas didácticas, continúa explicando que estos pueden ser “de tipo material, intelectual, humano, social o cultural, entre otras”. De esta afirmación se intuye que es posible crear recursos virtuales con fines didácticos, mediante las tecnologías de la información y comunicación (TIC), incluyendo, pero no limitándose a, el uso herramientas web.
+
+
+\subsection{Preparador académico}
+El ayudante o preparador, según la Escuela de Ingeniería Civil de la Pontificia Universidad Católica de Valparaíso (2015) citada en Herrera et al. (2017)\cite{Herrera}, con características y funciones análogas a las del de EISULA, “busca ser un facilitador de los contenidos, visto en la clase de cátedra por el académico a cargo del ramo. Sus actividades se centran principalmente en la realización de ejercicios, resúmenes de materias, resolución de dudas teóricas y de ejercicios (presenciales). Además, colaboran en la revisión de algunas evaluaciones y/o talleres o trabajos. Dicha instancia de ayudantía o preparaduría se realiza con una constancia de una o dos sesiones semanales, de dos horas pedagógicas cada una”. En este aspecto se resalta la figura del preparador como un facilitador de contenidos que bien pueden estar mediados con recursos didácticos.
+
+
+\subsection{Tecnologías de la información y la comunicación (TIC) como facilitadoras del aprendizaje}
+
+\subsubsection{Concepto}
+González (2010) citado en Montilla (2020)\cite{Montilla} señala que las TIC “son herramientas y materiales de construcción que facilitan el aprendizaje, el desarrollo de habilidades y distintas formas de aprender, estilos y ritmos de los aprendices.” Además, indica que las TIC representan un medio que permite maximizar el aprendizaje de los educandos, al utilizarlas y aprovecharlas como recurso didáctico para y en el aula.
+
+Parafraseando a Montilla (2020)\cite{Montilla}: En la nueva educación postpandemia, las TIC aparecen como elemento facilitador, al promover el desarrollo de aptitudes intelectuales y permitir la adquisición de habilidades y destrezas, que se siguen según las necesidades del estudiante y el docente. Además, intervienen como recurso innovador, al facilitar ambientes inteligentes de enseñanza-aprendizaje, que hacen sentir la necesidad de formar un modelo educativo de información, que considere el autoaprendizaje, mediante entornos dispuestos para el mismo.
+
+\subsubsection{Relación con las estrategias educativas}
+Parafraseando a Vargas et al. (2020)\cite{Vargas} se destaca que las nuevas tecnologías digitales y los recursos de Internet orientados a la educación permiten fortalecer el proceso educativo. Indica también, que, a partir de su integración con una estrategia educativa, es posible alcanzar objetivos académicos y desarrollar en los estudiantes diferentes competencias y habilidades, logrando así el aprendizaje auténtico y significativo. 
+
+La tabla \ref{tab:Estrategias} es el resultado de la relación entre las tecnologías y las estrategias a las que alude en su trabajo.
+
+	%Tabla1
+	\begin{longtable}[h]{ c  c }
+		\caption{\textit{Relación de las TIC con estrategias educativas.}\label{tab:Estrategias}}\\
+		 %Primer encabezado
+		\hline
+		\textbf{Estrategia Educativa} & \textbf{Tecnología Digital}\\
+		\hline
+		\endfirsthead
+		
+		%Encabezado en el resto de las hojas
+		\hline
+		\textbf{Estrategia Educativa} & \textbf{Tecnología Digital}\\
+		\endhead
+		
+		% Al final de la tabla en todas las hojas excepto en la primera
+		\hline
+		\endfoot
+		
+		% Al final Final de la tabla, es decir solo en la ultima hoja
+		\hline
+		Fuente: Elaboración propia basada en Vargas (2020)\cite{Vargas}
+		\endlastfoot
+		
+		
+		% Contenido de la Tabla
+		\multirow{4}{*}{Mapas Conceptuales} %El * es para no romper linea
+		& Draw.io\\
+		& CmapTools\\
+		& Microsoft Visio\\
+		& Lucidchart\\
+		\hline
+		\multirow{3}{*}{Mapas Mentales}
+		& MindMeister\\
+		& Lucidchart\\
+		& XMind\\
+		\hline
+		\multirow{2}{*}{Infografías}
+		& Google Drawing\\
+		& Piktochart\\
+		\hline
+		\multirow{3}{*}{Ilustraciones }
+		& Google Drawing\\
+		& RealWord Paint\\
+		& GIMP\\
+		\hline
+		\multirow{3}{*}{Preguntas Intercaladas}
+		& Google forms\\
+		& Survey Monkey\\
+		& Microsoft Forms\\
+		\hline
+		\multirow{3}{*}{Pistas Tipográficas}
+		& Xodo\\
+		& Sejda\\
+		& Adobe Reader DC\\
+		\hline
+		\multirow{2}{*}{Resumen}
+		& Google Docs\\
+		& Word 365\\
+		\hline
+		\multirow{3}{*}{Organizador Previo}
+		& Microsoft Sway\\
+		& Lucidchart\\
+		& Google Slides\\
+		\hline
+		\multirow{2}{*}{Analogías}
+		& Fibonicci\\
+		& EducaPlay\\
+		\hline
+		\multirow{2}{*}{Redes Semánticas}
+		& Google Slides\\
+		& ATLAS ti\\
+		\hline
+		\multirow{2}{*}{Textos Narrativos}
+		& Google Docs\\
+		& Moon Reader\\
+	\end{longtable}
+	% Fin de Tabla 1
+
+
+\subsubsection{Influencia como herramientas web}
+Respecto al cambio del ambiente educativo tradicional hacia la modalidad virtual Saza (2016)\cite{Saza} señala que “las TIC han evolucionado e ingresado en las instituciones educativas, en sus comienzos en la enseñanza de computación en los años 90, pasando por la conectividad a la WWW y el uso del hipervínculo, hasta apoyo para los diferentes procesos de aprendizaje de las diferentes áreas de conocimiento gracias a los diferentes desarrollos de la WEB 2.0 y 3.0”, es decir, resalta que la educación virtual se caracteriza por una influencia significativa de la conectividad, especialmente a través de internet. Tales afirmaciones conducen a la necesidad de usar recursos basados en la web para planificar, diseñar e implementar cursos capaces de cumplir con los objetivos de la didáctica.
+
+En consecuencia a lo anterior, Saza (2016)\cite{Saza} presenta una tabla, en la que reúne una colección de herramientas web 2.0 categorizadas según sus utilidades y funciones:
+
+	%Tabla2
+	\begin{longtable}[h]{ c  c }
+	\caption{\textit{Categorización de Herramientas Web.}\label{tab:Herramientas}}\\
+		 %Primer encabezado
+		\hline
+		\textbf{Categoría} & \textbf{Herramientas Web}\\
+		\hline
+		\endfirsthead
+		
+		%Encabezado en el resto de las hojas
+		\hline
+		\textbf{Categoría} & \textbf{Herramientas Web}\\
+		\endhead
+		
+		% Al final de la tabla en todas las hojas excepto en la primera
+		\hline
+		\endfoot
+		
+		% Al final Final de la tabla, es decir solo en la ultima hoja
+		\hline
+		Fuente: Elaborada por Saza (2016)\cite{Saza} y basada en Pérez (2011)
+		\endlastfoot
+		
+		
+		% Contenido de la Tabla
+		\multirow{3}{*}{Presentaciones}
+		& SlideShare\\
+		& Calameo\\
+		& Issuu\\
+		\hline
+		\multirow{3}{*}{Esquemas, diagramas o instrumentos de conocimiento [sic.]}
+		& Cacoo\\
+		& Cmaptools\\
+		& Lucidchart\\
+		\hline
+		\multirow{2}{*}{Disco / Almacenamiento}
+		& Dropbox\\
+		& Google DRIVE\\
+		\hline
+		\multirow{2}{*}{Líneas de Tiempo}
+		& Timerime\\
+		& My Timeline\\
+		\hline
+		\multirow{2}{*}{Documentos / Office}
+		& Google DRIVE\\
+		& SKYDRIVE\\
+		\hline
+		\multirow{3}{*}{Video / animaciones [sic.]}
+		& YouTube\\
+		& Vimeo\\
+		& Animoto\\
+		\hline
+		\multirow{3}{*}{Comunicación}
+		& Hangouts\\
+		& Skype\\
+		& Foros\\
+	\end{longtable}
+	%Fin de Tabla2
+	
+\chapter{Marco Metodológico}
+\section{Selección de la Tecnología}
+En la actualidad se vive una transformación educativa, producto de la situación postpandemia, en la que se ha destacado la necesidad de utilizar herramientas que no dependan de la asistencia presencial de un tutor para transmitir conocimientos. Por lo tanto, es imprescindible hacer uso de recursos didácticos multimedia, acordes al desarrollo de las actividades realizadas por el estudiante, en cada una de sus fases de formación\cite{Zambrano}.
+
+Muhammad et al. (2020)\cite{Muhammad} enfatizan que los sistemas e-learning son capaces de brindar experiencias de aprendizaje, o capacitación, a través de una combinación entre una computadora, un navegador e Internet.
+
+Aunado a ello, Camacho (2018)\cite{Camacho} ha destacado la importancia de los entornos virtuales como medio de enseñanza-aprendizaje, siempre y cuando se combinen con estrategias o recursos didácticos que generen en los docentes la motivación para implementarlos de manera constante.
+
+Ante tales afirmaciones cabe mencionar los estudios de De La Fuente et al. (2018)\cite{DeLaFuente} donde se señala que el video, continúa siendo la herramienta educativa predilecta de alumnos y profesores, principalmente, en aquellas asignaturas cuya particularidad es el contenido práctico. Además, dicho estudio comprobó que el uso del video en sus distintos formatos contribuye positiva y significativamente en las calificaciones y el rendimiento académico de los estudiantes que hacen uso de él.
+
+En concordancia con estos criterios están los estudios de Palencia y Reyes (2019)\cite{Palencia} en los cuales se evidencia la preferencia por los videos tutoriales, opinión esta desde la perspectiva de los tutores. Además, destacan el uso del color azul en la elaboración de dichas herramientas multimedia porque éste potencia el aprendizaje.
+
+En base a estas premisas y debido al carácter práctico de los laboratorios, se llega a la conclusión de construir el preparador digital para la materia Sistemas Operativos de EISULA, como un sitio web que haga uso de videos informativos para transmitir el conocimiento, en los cuales se destaque la presencia del color azul como potenciador del aprendizaje; cumpliendo así la función del preparador académico como facilitador de contenidos\cite{Herrera}.
+
+
+\section{Proceso de software del preparador digital}
+La elaboración del producto de software se llevará a cabo a través de un modelo de proceso en cascada, debido a que desde el inicio se tienen bien definidos los requerimientos y los mismos no serán sometidos a cambios significativos hasta la culminación del proyecto. Por lo tanto, en vista de que se tiene una visión detallada de las actividades, el “ciclo de vida clásico” logra un desarrollo manejable y permite tener control sobre las fechas de culminación de los objetivos. La figura \ref{fig:Proceso} muestra el diagrama del flujo del proceso, con las actividades estructurales que lo comprenden: especificación, planeación, modelado, construcción y despliegue; junto con las acciones pertinentes a cada una de ellas.\\ %badbox que se ignora
+
+\begin{figure}[h!]
+	\centering
+	\caption{\textit{Diagrama del flujo del proceso para el preparador digital.}\\}
+	\vspace{\baselineskip}
+	\includegraphics[scale=0.8]{img/cascada1}
+	Fuente: Elaboración propia.
+	\label{fig:Proceso}
+\end{figure}
+
+
+Cabe destacar que, como se ilustra en la figura \ref{fig:Construccion}, la actividad de construcción se realizará por medio de ciclos de tareas que generen incrementos. Sin embargo, no debe pensarse en una metodología ágil, pues el carácter iterativo se manifiesta solo dentro de la actividad estructural sin alterar los requerimientos del producto.\\ %badbox que se ignora
+
+
+\begin{figure}[ht!]
+	\centering
+	\caption{\textit{Actividad de construcción del preparador digital.}\\}
+	\vspace{\baselineskip}
+	\includegraphics[scale=0.70]{img/acts_d_construccion}
+	Fuente: Elaboración propia.
+	\label{fig:Construccion}
+\end{figure}
+
+
+Es oportuno señalar que la tarea “implementar incremento” hace referencia a la serie de operaciones relacionadas con agregar un nuevo tema dentro del preparador digital.
+
+\section{Arquitectura del preparador digital}
+El contexto arquitectónico del producto está conformado por la utilización de la herramienta web youtube como repositorio de videos y sistema superior, también, se tiene como actores principales a los estudiantes de la asignatura Sistemas Operativos de EISULA. La figura \ref{fig:Contexto} ilustra dicho contexto.\\\\ %badbox que se ignora
+
+
+\begin{figure}[ht!]
+	\centering
+	\caption{\textit{Diseño arquitectónico del contexto del preparador digital.}\\}
+	\vspace{\baselineskip}
+	\includegraphics[scale=0.75]{img/Contexto_del_producto}
+	\\Fuente: Elaboración propia.
+	\label{fig:Contexto}
+\end{figure}
+
+El preparador digital será construido a manera de sitio web y estará conformado por tres páginas web: Inicio, contenido, video. La primera es la página principal que funge como bienvenida para el estudiantado. La segunda mostrará un índice de contenidos, en forma de tabla o menú de acordeón, con temas organizados según los laboratorios de la asignatura. Cada entrada del menú representa un hipervínculo que dirige el control virtual a la tercera página, encargada de mostrar un video, información complementaria y enlaces a las páginas de videos restantes del mismo laboratorio.
+
+Además, la página de inicio dispondrá de una sección con enlaces a las páginas de los videos iniciales de cada laboratorio, así los estudiantes tendrán una visión general de la magnitud de la materia desde su primera interacción con el preparador. La figura \ref{fig:Arquitectura} ilustra los tres componentes y las relaciones de navegación entre ellos.\\\\\\ % 3 badbox que se ignoran
+
+\begin{figure}[ht!]
+	\centering
+	\caption{\textit{Diseño arquitectónico del preparador digital.}\\}
+	\vspace{\baselineskip}
+	\includegraphics[scale=1]{img/Arquitectura_contenido}
+	\\Fuente: Elaboración propia.
+	\label{fig:Arquitectura}
+\end{figure}
+
+Cabe destacar que por tratarse de un sitio web sencillo, se eligió para su construcción un diseño arquitectónico de red, conocido también como “telaraña pura”, en el cual cada componente es accesible desde los otros, con la finalidad de aportar una mayor flexibilidad de navegación al usuario, en comparación a los enfoques lineales característicos de sistemas tutoriales.
+
+Es oportuno señalar que el motivo por el cual no se presentan más esquemas arquitectónicos, es debido a que el producto se trata de un sitio web estático en su forma más simple.
+
+
+\section{Diseño del contenido de los videos para el caso “Sistemas Operativos-EISULA”}
+Para la realización de los videos del preparador digital, se seleccionó gran mayoría de los temas y ejercicios vistos con frecuencia en las prácticas de laboratorio de la materia Sistemas Operativos de EISULA, desde semestres anteriores a la actualidad, haciendo hincapié en lo estrictamente relacionado con el área en cuestión, sin indagar en principios básicos de la programación y tomando en cuenta su importancia, ya sea en el ámbito laboral o en posteriores fases de la  formación académica del estudiantado. La tabla \ref{tab:Laboratorios} muestra los tópicos elegidos y por lo tanto los videos, correspondientes a cada laboratorio, en orden ascendente según su aparición en el contenido programático de la asignatura:
+
+	%Tabla3
+	\begin{longtable}[h]{p{2cm} c c}
+		\caption{\textit{Temario del preparador digital para Sistemas Operativos-EISULA.}\label{tab:Laboratorios}}\\
+		 %Primer encabezado
+		\hline
+		\textbf{N} & \textbf{Laboratorio} & \textbf{Temas/Videos}\\
+		\hline
+		\endfirsthead
+		
+		%Encabezado en el resto de las hojas
+		\hline
+		\textbf{N} & \textbf{Laboratorio} & \textbf{Temas/Videos}\\
+		\endhead
+		
+		% Al final de la tabla en todas las hojas excepto en la primera
+		\hline
+		\endfoot
+		
+		% Al final Final de la tabla, es decir solo en la ultima hoja
+		\hline
+		\multicolumn{2}{l}{Fuente: Elaboración propia.}
+		\endlastfoot
+		
+		
+		% Contenido de la Tabla
+		\multirow{1}{*}{1} & \multirow{1}{*}{Práctica Inicial}
+		& Llamadas al Sistema\\
+		\hline
+		\multirow{3}{*}{2} & \multirow{3}{*}{Señales y Temporizadores}
+		&   Señales POSIX y Envío de Señales\\
+		& & ¿Cómo Capturar Señales?\\
+		& & Temporizadores\\
+		\hline
+		\multirow{3}{*}{3} & \multirow{3}{*}{Procesos}
+		&   Procesos Pesados\\
+		& & Hilos\\
+		& & Procesos vs Hilos\\
+		\hline
+		\multirow{2}{*}{4} & \multirow{2}{*}{Comunicación Interproceso (IPC)}
+		&   Memoria Compartida\\
+		& & Cola de Mensajes\\
+		\hline
+		\multirow{1}{*}{5} & \multirow{1}{*}{Sincronización}
+		& Semáforos\\
+		\hline
+		\multirow{2}{*}{6} & \multirow{2}{*}{Comunicación Remota}
+		&   Sockets\\
+		& & Llamadas a Procedimientos Remotos (RPC)\\
+	\end{longtable}
+	%Fin de Tabla3
+
+Cabe destacar que la temática de la materia fue segmentada con la intención de elaborar videos más cortos y concretos, en comparación con la duración de una clase presencial, aportando flexibilidad a la manera en la que el alumno planifica sus sesiones de estudio, facilitando así la interiorización de los conocimientos.
+
+
+\section{Herramientas para la construcción del preparador digital}
+La construcción del preparador digital requiere del desarrollo de un sitio web estático, por lo tanto, se hará uso de los lenguajes HTML y CSS, junto con el kit de herramientas frontend Bootstrap, para el cumplimiento de este propósito. En conjunción, se necesita la elaboración de videos informativos, para lo cual se utilizará una grabadora digital para el audio y el software de escritorio Camtasia Studio 9 para hacer screencast y, posteriormente, llevar a cabo el proceso de edición y renderizado del video.\\
+
+Aunado a ello, el contenido de dichos videos consistirá, principalmente, en la realización y explicación detallada de programas de juguete (toy program) referentes a las prácticas de laboratorio de la materia Sistemas Operativos de EISULA, elaborados con las herramientas de la API POSIX de los sistemas UNIX, en una imagen de Linux Ubuntu, en su versión 22.04, dentro de un contenedor de Docker, y mostrando las entradas, salidas y manipulación de cada ejercicio vía línea de comandos. También se presentarán ilustraciones que servirán para manifestar conocimientos abstractos, presentes en los tópicos de la asignatura en cuestión, con la finalidad de facilitar la comprensión de aquéllos.
+
+\chapter{Implementación}
+\section{Visión general}
+El sitio web que funge como preparador digital está conformado por tres vistas: inicio, contenido y video, las mismas serán detalladas en secciones posteriores. Cabe destacar que el sitio web tiene un encabezado y un pie de página común a las tres vistas, tal como se indica en las figuras \ref{fig:Header} y \ref{fig:Footer} respectivamente. El primero contiene un menú de navegación hacia las páginas de contenido e inicio, por otro lado, el pie de página presenta información de contacto, ambos elementos incluyen logos y colores institucionales, presentes en todo el producto de software.\\\\
+
+\begin{figure}[ht!]
+	\centering
+	\caption{\textit{Encabezado del preparador digital.}\\}
+	\vspace{\baselineskip}
+	\includegraphics[scale=0.5]{img/header}
+	\\Fuente: Elaboración propia.
+	\label{fig:Header}
+\end{figure}
+
+\begin{figure}[ht!]
+	\centering
+	\caption{\textit{Pie de página del preparador digital.}\\}
+	\vspace{\baselineskip}
+	\includegraphics[scale=0.5]{img/footer}
+	\\Fuente: Elaboración propia.
+	\label{fig:Footer}
+\end{figure}
+
+\section{Vista de inicio}
+La página de inicio, tal como se muestra en la figura \ref{fig:Home}, representa la primera vista con la que se encuentra el estudiante que recién ingresa al sitio web. En ella puede apreciarse información de bienvenida y una sección conformada por tarjetas (cards web) relativas a cada laboratorio de la asignatura Sistemas Operativos de EISULA, de tal manera que el estudiante puede tener una noción del contenido programático, además, cada tarjeta posee un hipervínculo hacia la vista de video del tema inicial de cada Laboratorio.
+
+\begin{figure}[ht!]
+	\centering
+	\caption{\textit{Vista de inicio.}\\}
+	\vspace{\baselineskip}
+	\includegraphics[scale=0.22]{img/home}
+	\\Fuente: Elaboración propia.
+	\label{fig:Home}
+\end{figure}
+
+\clearpage
+\section{Vista de contenido}
+La vista de contenido, como se ilustra en la figura \ref{fig:Cotenido} está conformada únicamente por un menú de acordeón con entradas a las paginas de video de cada laboratorio. Este menú fue pensado como una forma de satisfacer la necesidad de navegar entre temas, sin abandonar la sección donde se detalla el contenido de la asignatura, de esta manera se tienen las ventajas de una barra lateral de navegación, dentro de un espacio más cómodo y como punto focal.
+
+\begin{figure}[ht!]
+	\centering
+	\caption{\textit{Vista de contenido.}\\}
+	\vspace{\baselineskip}
+	\includegraphics[scale=0.27]{img/contenido}
+	\\Fuente: Elaboración propia.
+	\label{fig:Cotenido}
+\end{figure}
+
+
+\clearpage
+\section{Vista de video}
+La vista de video, funciona a manera de marco del contenido pedagógico, tal como se detalla en la figura \ref{fig:Vistavideo}. En su sección principal presenta un video informativo referente al tema en cuestión, con su respectivo título y un área inferior que incluye una descripción destinada a mostrar información textual complementaria, así como, recomendaciones, resúmenes, hipervínculos a páginas externas, conclusiones, etc. Además, posee una barra lateral de navegación, con la cual el alumno puede acceder rápidamente al resto de los videos del laboratorio.
+
+Cabe destacar que, en la imagen previa del video presente en la figura \ref{fig:Vistavideo}, se puede apreciar el uso del color azul de fondo, el cual actúa como potenciador del aprendizaje y la presencia de código C perteneciente a la API POSIX.
+
+\begin{figure}[ht!]
+	\centering
+	\caption{\textit{Vista de video.}\\}
+	\vspace{\baselineskip}
+	\includegraphics[scale=0.43]{img/vista_video}
+	\\Fuente: Elaboración propia.
+	\label{fig:Vistavideo}
+\end{figure}
+
+
+
+\chapter{Palabras Finales}
+\section{Conclusiones}
+La investigación reveló que, en esta época, en vías de la postpandemia, surge la necesidad de renovar y/o transformar la educación universitaria, recurriendo a estrategias que hagan uso de las TIC para facilitar el proceso de enseñanza-aprendizaje, mediado por recursos virtuales. Tal es el caso de EISULA, donde se evidencian estas circunstancias, junto con una diáspora de preparadores académicos que agudizan la problemática.
+
+En este sentido, la búsqueda de respuestas para dicha situación, motivo la creación de un recurso virtual para la asignatura Sistemas Operativos, que en su carácter de facilitador de contenidos y haciendo uso de videos informativos, con la finalidad de potenciar el aprendizaje de los fundamentos prácticos presentes en los laboratorios de la mencionada materia, funge como punto de partida para la construcción de un preparador digital, en miras a una nueva universidad venezolana y en cumplimiento con los objetivos de este trabajo.
+
+
+
+\section{Trabajos futuros}
+\begin{itemize}
+	\item El preparador digital es una propuesta de utilidad para múltiples asignaturas, la cual propicia la exploración de diversas estrategias de enseñanza y tecnologías correspondientes a cada una de ellas, en su implementación.
+
+	\item El preparador digital es un producto de software de código abierto, esto permite la inclusión de nuevos componentes, que incorporen funcionalidades adicionales, relativas a la interacción docente-estudiante, tales como, la realización de conferencias, la inclusión de foros de opinión, recibir tareas del estudiante, publicar y aplicar encuestas, chats, entre otras. 
+
+	\item El uso de la tecnología móvil es cada vez más frecuente en la sociedad moderna, por lo tanto, es conveniente la adecuación del producto a distintos dispositivos, lo que implica explorar alternativas en m-learning.
+\end{itemize}
+
+\newpage
+El producto tecnológico de esta investigación esta oficialmente disponible en\\ \url{https://valbornoz.github.io/portfolio/so-Labs}
+	%Fin Documento
+	
+	
+	
+	%Bibliografia
+%\renewcommand{\bibname}{REFERENCIAS BIBLIOGRAFICAS}
+
+\begin{thebibliography}{99}
+% Aquí figurará la bibliografía
+%\bibitem[índice opcional]{etiqueta} texto bibliográfico
+\addcontentsline{toc}{chapter}{Bibliografía} % Agregar Bibliografía en el indice, como un capitulo sin numerar
+
+	%
+	% Capitulo I
+	%
+	\bibitem{Cavagnaro}
+	Cavagnaro-Murillo, C. (2022) \textbf{La calidad en la docencia Universitaria híbrida pospandemia}. [Revista en línea] Universidad Central “Marta Abreu” de Las Villas, Cuba.  
+\url{https://doi.org/10.35381/cm.v8i2.714}
+
+	%
+	%
+	
+	% Capitulo II
+	
+	% Antecedentes
+	\bibitem{Marin}
+Marín, F. (2019). \textbf{Aula invertida y aprendizaje basado en tareas a través de las TIC para el aprendizaje del inglés}. Revista Vinculando.\\ \href{https://vinculando.org/beta/aula-invertida-y-aprendizaje-basado-en-tareas-a-traves-de-las-tic-para-el-aprendizaje-del-ingles.html}{(https://vinculando.org) Aula invertida y aprendizaje basado en tareas}
+	%
+	%
+	\bibitem{Camacho}
+Camacho, L. (2018) \textbf{Entornos Virtuales como Medio de Enseñanza en la Praxis Docente Universitaria Carrera de Derecho de UNELLEZ, Barinas}. [Tesis en línea]. Universidad Nacional Experimental de los Llanos Occidentales “Ezequiel Zamora”. 
+\url{http://opac.unellez.edu.ve/doc_num.php?explnum_id=269}
+	%
+	%
+	\bibitem{Gutierrez}
+Gutiérrez, R. (2020) \textbf{Implementación de Clases Virtuales, Rendimiento Académico de Alumnos Pregrado Universidad San Ignacio de Loyota} [Trabajo de Investigación en línea]. \url{https://repositorio.usil.edu.pe/server/api/core/bitstreams/49b1b6eb-76e7-4519-9c41-9d45bcf3e68b/content}
+	%
+	%
+	\bibitem{Anton}
+Antón, R. (2018) \textbf{Competencias Pedagógicas de los Tutores Virtuales}. [Tesis en línea]. Comisión de Estudios de Postgrado Área Educación, Facultad de Humanidades y Educación, Universidad Central de Venezuela. 
+\url{http://saber.ucv.ve/bitstream/10872/20628/1/TESIS\%20FINAL\%20DE\%20LA\%20MAESTR\%C3\%8DA\%20RONALD\%20\%20ANTON\%20\%28cv\%29.pdf}
+	%
+	%
+	\bibitem{Henao}
+Henao, O., Ramírez, D., Villa, V., Soto, P. y Morales, J. (2022) \textbf{La enseñanza virtual en el contexto de la cultura académica universitaria: Una aproximación a los procesos de tutoría y acompañamiento}. Revista Virtual Universidad Católica del Norte, (65), 31-65. \url{https://www.doi.org/10.35575/rvucn.n65a3}
+	%
+	%
+	\bibitem{Zambrano}
+Zambrano-Orellana, G. A., Moreira-Ponce, M. J., Morales-Zambrano, F. F., \& Amaya-Conforme, D. R. (2021). \textbf{Recursos virtuales como herramientas didácticas aplicadas en la educación en situación de emergencia}. Polo del conocimiento, 6(4), 73-87. \url{https://polodelconocimiento.com/ojs/index.php/es/article/view/2539}
+	%
+	%
+	\bibitem{Palencia}
+Palencia, R., \& Reyes, S. (2020). \textbf{Características de los recursos educativos multimedia en la aplicación de blended learning en cursos semipresenciales en la educación superior desde la perspectiva del tutor}. [Archivo PDF]. Proceedings of the Digital World Learning Conference CIEV 2019. Universidad Galileo, Guatemala. \url{http://biblioteca.galileo.edu/tesario/bitstream/123456789/951/1/3.pdf}
+	%
+	%
+	\bibitem{DeLaFuente}
+	De La Fuente Sánchez, D., Solís, M. H., \& Martos, I. P. (2018).  \textbf{Vídeo educativo y rendimiento académico en la enseñanza superior a distancia}. RIED. Revista Iberoamericana de Educación a Distancia, 21(1), 323-341. %Consultado el 29 de septiembre de 2022 en:
+	\url{https://doi.org/10.5944/ried.21.1.18326}
+	%
+	%
+
+
+%	Bases Teoricas
+\bibitem{Kumar}
+Kumar Basak, S., Wotto, M., \& Belanger, P. (2018). \textbf{E-learning, M-learning and D-learning: Conceptual definition and comparative analysis}. E-learning and Digital Media, 15(4), 191-216.
+\url{https://journals.sagepub.com/doi/full/10.1177/2042753018785180}
+	%
+	%
+	\bibitem{Muhammad}
+Muhammad, A. H., Siddique, A., Youssef, A. E., Saleem, K., Shahzad, B., Akram, A., \& Al-Thnian, A. B. S. (2020). \textbf{A hierarchical model to evaluate the quality of web-based e-learning systems}. Sustainability, 12(10), 4071. 
+\url{https://www.mdpi.com/2071-1050/12/10/4071/pdf?version=1590471126}
+	%
+	%
+%	\bibitem{Zambrano}
+%Zambrano-Orellana, G. A., Moreira-Ponce, M. J., Morales-Zambrano, F. F., \& Amaya-Conforme, D. R. (2021). \textbf{Recursos virtuales como herramientas didácticas aplicadas en la educación en situación de emergencia}. Polo del conocimiento, 6(4), 73-87. \url{https://polodelconocimiento.com/ojs/index.php/es/article/view/2539}
+	%
+	%
+	\bibitem{Herrera}
+Herrera, R. F., Rivera, M. L., \& Felipe, C. (2017). \textbf{Desempeño académico de los ayudantes/preparadores en carreras de ingeniería}. Ágora de Heterodoxias, 3(1), 124-132. \url{http://bdigital2.ula.ve:8080/xmlui/654321/4618}
+	%
+	%
+	\bibitem{Montilla}
+Montilla Pol., Yenny. N. (2020). \textbf{Whatsapp como herramienta educativa en la enseñanza aprendizaje}. Revista Vinculando. \url{https://vinculando.org/beta/whatsapp-como-herramienta-educativa-en-la-ensenanza-aprendizaje.html}
+	%
+	%
+	\bibitem{Vargas}
+Vargas-Murillo, G. (2020). \textbf{Estrategias educativas y tecnología digital en el proceso enseñanza aprendizaje}. Cuadernos Hospital de Clínicas, 61(1), 114-129.
+\url{http://www.scielo.org.bo/scielo.php?pid=S1652-67762020000100010\&script=sci_arttext}
+	%
+	%
+	\bibitem{Saza}
+Saza-Garzón, I. D. (2016). \textbf{Estrategias didácticas en tecnologías web para ambientes virtuales de aprendizaje}. Praxis, 12(1), 103-110.
+\url{http://dx.doi.org/10.21676/23897856.1851}
+
+	
+	
+\end{thebibliography}
+\end{document}
